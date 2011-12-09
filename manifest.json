@@ -1,0 +1,18 @@
+{
+  "name": "Order UI",
+  "version": "1.0",
+  "description": "Order UI Extension.",
+  "app": {
+    "launch": {
+      "local_path": "main.html"
+    }	
+  },
+  "icons": {
+    "16": "images/icon_16.png",
+    "128": "images/icon_128.png"
+  },
+  "permissions": [
+    "tabs",
+    "http://*/*"
+  ]
+}

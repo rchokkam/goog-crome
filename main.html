@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Order UI for Kasia 2.0</title>
+<meta content="Order UI for Kasia 2.0" name="description">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta content="jitendra.takalkar@gmail.com" name="author">
+
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/order-ui.js"></script>
+
+<link type="text/css"
+	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
+	rel="Stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/tocLayout.css" type="text/css" />
+<link rel="stylesheet" href="css/order-ui.css" type="text/css" />
+
+<link rel="shortcut icon" href="http://static.jquery.com/favicon.ico" type="image/x-icon" />
+
+
+
+</head>
+
+<body id="interior">
+
+	<!-- #siteContain -->
+	<div id="siteContain">
+		<!-- #header -->
+		<div id="header">
+			<a id="siteLogo" href="http://yousee.dk" title="YouSee a/s"> <img
+				src="images/yousee_logo_v2.png"
+				alt="YouSee - vi skaber glæde foran skærmen" />
+			</a>
+
+			<h1>Order UI for Kasia 2.0</h1>
+		</div>
+		<!-- /#header -->
+
+		<div id="content" class="clearfix">
+			<!-- #primaryContent -->
+			<div id="primaryContent">
+				<section id="request">
+					<fieldset id="request">
+						<legend>Request</legend>
+						<p id="purl">
+          				<label for="url" class="_msg_">url</label> 
+          				<input type="text" name="url" id="url" tabindex="1">
+          				<input class="_msg_val_" type="button" value="send" id="submit" tabindex="2">
+        				</p>
+					</fieldset>
+				</section>
+
+				<section id="response">
+					<fieldset id="request">
+						<legend>Response</legend>
+						<div id="dresponse">						
+						</div>
+					</fieldset>
+				</section>
+			</div>
+			<!-- /#primaryContent -->
+		</div>
+	</div>
+	<!-- /#siteContain -->
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+#header p {
+	font-size: 20pt;
+	line-height: 24pt;
+	font-weight: bold;
+}
+
+pre {
+	padding: 5px;
+	border: dotted 1px #aaa;
+	background: #e8e8e8;
+	font-family: monospace;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap !important;
+	word-wrap: break-word;
+}
+
+#toc {
+	float: right;
+	font-size: 8px; 
+	width: 200px;
+	padding: 0 0 0 5px;
+	background: #efffb1;
+	border: solid 1px #ccd136;
+	margin: 0 5px 0 0;
+}
+
+a.toc-top-link {
+	width: 30px;
+	padding: 4px;
+	background: #eee;
+	top: 0;
+	font-size: 8px;
+	text-align: center;
+}
+
+#tocWrapper ol { 
+	list-style: upper-alpha;
+	padding: 2px 2px 0 30px;
+	line-height: 0.4;
+}
+#tocWrapper ol ol { 
+	list-style: decimal;
+	padding: 2px 2px 0 10px;
+}
+#tocWrapper ol ol ol {
+       	list-style: lower-roman;
+	padding: 2px 2px 0 10px;
+}
+#tocWrapper ol ol ol ol { 
+	list-style: lower-alpha;
+	padding: 2px 2px 0 10px;
+}

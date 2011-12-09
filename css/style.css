@@ -1,0 +1,441 @@
+body {
+	background: #39414a url(../images/bg_body.png) repeat 50% 0;
+	font: normal 62.5% "Trebuchet MS", Verdana, Helvetica, Arial,sans-serif !important;
+	color: #fff;
+	line-height: 1.4;
+	margin: 0;
+	padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Trebuchet MS", Verdana, Helvetica, Arial,sans-serif !important;
+	margin: 0;
+	padding: 0;
+	letter-spacing: 0;
+	border-bottom: 0 !important;
+}
+
+a {
+	border-bottom: 0;
+	color: #5DB0E6;
+}
+a:focus {
+	outline: 1px dotted #eee;
+}
+a:active {
+	outline: 0;
+}
+a:hover {
+	color: #7bc4f4;
+}
+body#interior {
+	background-image: url(../images/bg_body.png);
+}
+ul li a{
+  text-decoration: none;
+}
+#siteContain {
+	width: 1024px;
+	margin: 0 auto;
+}
+#header {
+	height: 156px;
+	padding: 0 40px;
+	position: relative;
+}
+body#interior #header { 
+	background: url(../images/bg_header.png) repeat 50% 0;
+	height: 65px;
+}
+#siteLogo {
+	display: block;
+	top: 5px;
+	position: absolute;
+	border: 0 !important;
+}
+#siteLogo img {
+border: 0 !important;
+}
+
+#header h1 {
+	font-size: 1em;
+	font-weight: normal;
+	color: #000;
+	position: absolute;
+	bottom: 6px;
+	left: 60px;
+	line-height: 1;
+	border: 0;
+	padding: 0;
+/*	text-transform: uppercase; */
+}
+#header h1#tagline  {
+	position: absolute;
+	left: -999999px;
+}
+
+
+div#whosUsing {
+	position: relative;
+	clear: both;
+	height: 45px;
+	background: #131C25;
+}
+
+
+/*content*/
+#content {
+	padding: 2em 20px;
+	border: 0 solid #000;
+	/* Fallback for web browsers that doesn't support RGBa */
+	background: rgb(0, 0, 0);
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.4);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
+#bodyContent {
+	padding-right: 5px;
+}
+
+body.enhanced {
+	position: relative;
+}
+
+body.enhanced {
+	/*opacity: 0.0001;*/
+	position: absolute;
+	width: 253px;
+	height: 54px;
+	background: url(../images/bg_ctaTooltip.png) 0 0 no-repeat;
+	top: -1.5em;
+	left: -35%;
+	z-index: 100;
+}
+body.enhanced #intro li p{
+	font-size: 1em;
+	padding: 10px 5px 0 50px;
+	color: #AE0001;
+	font-weight: bold;
+	line-height: 1.3em;
+	margin: 0;
+	cursor: pointer;
+}
+
+
+p.neat {
+display: none;
+clear: both;
+margin: 1em 0;
+padding: 1em 15px;
+
+background: #0F67A1;
+}
+p.surprise a {
+color: #fff;
+}
+div.gettingStarted, div.devResources {
+	width: 50%;
+	float: left;
+}
+
+/*Interior page content*/
+
+#interiorNavigation {
+	float: left;
+	display: inline;
+	width: 164px;
+	background: #fafafa;
+	border: 1px solid #ccc;
+	padding: 5px 15px 15px;
+	min-height: 500px;
+	-moz-border-radius: .5em; /* gecko */
+	  -webkit-border-radius: .5em; /* webkit */
+	  border-radius: .5em; /* w3 */
+	color: #000;
+}
+
+#interiorNavigation h5 {
+	background:#DDD;
+	color:#192839;
+	font-size:1.2em;
+	font-weight:bold;
+	margin:2em 0 0.4em;
+	padding:0.3em 10px;
+	text-transform:uppercase;
+  border-bottom: 1px solid #aaa;
+}
+#interiorNavigation ul {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	margin: 0;
+}
+#interiorNavigation li {
+	margin:0;
+	padding: 0;
+	_height: 1%;
+}
+#interiorNavigation a, #interiorNavigation a:active {
+	font-size: 1.2em;
+	line-height: 1.4;
+	color: #0f67a1;
+	display: block;
+	/*padding:0.2em 10px;*/
+	margin: 0;
+	text-decoration: none;
+	position: relative;
+	border-bottom:1px solid #EEEEEE;
+}
+#interiorNavigation a:hover {
+	background: #eee;
+	color: #192839;
+	border-bottom: 1px solid #ddd;
+	text-decoration: underline;
+}
+#interiorNavigation p a {
+	display: inline;
+	padding: 0;
+	text-decoration: underline;
+	font-size: 1.0em;
+}
+
+
+#primaryContent {
+	position: relative;
+	/*float: right;*/
+	/*display: inline;*/
+	/*width: 744px;*/
+	background: #fafafa;
+	border: 1px solid #aaa;
+	padding: 5px 15px 15px;
+	color: #222;
+	min-height: 500px;
+	-moz-border-radius: .5em; /* gecko */
+	  -webkit-border-radius: .5em; /* webkit */
+	  border-radius: .5em; /* w3 */
+	  overflow: visible;
+}
+#primaryContent .post {
+    margin-bottom: 2.5em;
+      padding-bottom: 2.5em;
+    border-bottom: 1px dotted #ccc;
+}
+#primaryContent code {
+    font-size: 13px !important;
+}
+#primaryContent h2 code {
+    font-size: 1.3em !important;
+}
+#primaryContent p, #primaryContent li {
+	font-size: 12px;
+	/*font-size: 1.3em;*/
+	/*line-height: 1.4 !important;*/
+	/*margin: .5em 0 !important;*/
+}
+#primaryContent p {
+	margin: .5em 0 1.2em !important;
+}
+#interior #primaryContent p, #interior #primaryContent li {
+	font-size: 12px;
+	/*font-size: 1.5em;*/
+	/*line-height: 1.5 !important;*/
+	/*font-weight: normal;*/
+}
+#primaryContent a, #primaryContent a:visited {
+	color: #0F67A1;
+	text-decoration: none;
+	
+}
+#primaryContent a:hover, #primaryContent a:visited {
+	color: #176092;
+	text-decoration: underline;
+}
+#primaryContent a img {
+	border: 0;
+}
+
+#primaryContent h1 {
+	font-size: 1.9em;
+	font-weight: bold;
+	color: #222;
+	margin: .5em 0 0 !important;
+	border-bottom: 1px solid #bbb !important;
+	padding-bottom: .4em;
+	text-transform: uppercase;
+}
+#primaryContent h2 {
+	font-size: 1.5em;
+	color: #333;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin: 1em 0 .6em !important;
+}
+#primaryContent h2 a {
+	text-decoration: none;
+}
+#primaryContent h2 a:hover {
+	text-decoration: underline;
+}
+#ticket h2 {
+	font-size: 1.3em;
+}
+#primaryContent small {
+	font-size: 11px;
+	color: #666;
+	margin: 1.6em 0 1em;
+}
+#primaryContent h3 {
+	font-size: 1.4em;
+	margin: 1em 0 .6em !important;
+	color: #333;
+	font-weight: bold;
+}
+#primaryContent h4 {
+	font-size: 1.2em;
+	margin: 1em 0 .6em !important;
+	color: #444;
+	font-weight: bold;
+}
+#primaryContent h5 {
+	font-size: 1.1em;
+	margin: 1em 0 .6em !important;
+	font-weight: bold;
+	color: #666;
+}
+
+
+
+ul li, ul.menu li, .item-list ul li, li.leaf {
+	/*background: none !important;*/
+}
+.fieldset-wrapper .project-terms li {
+	font-size: 1.3em;
+
+}
+
+/*=Dev/Trac pages*/
+td.fullrow textarea {
+  width: 497px;
+}
+table.listing tbody td, 
+table.listing tbody th {
+  font-size: 11px;
+}
+dl#results {
+  font-size: 1.3em;
+}
+/*=Plugin/Drupal pages*/
+#container #comments,
+div.comment,
+div.node {
+	border-width: 0;
+}
+#container #comments h2.comments {
+  margin: 0;
+}
+div.project-issue .quick-search select#edit-projects,
+div.project-issue .quick-search select#edit-states {
+  width: 140px;
+}
+
+/* ----- clear fix for floats ----- */
+.clearfix:after { content: "."; display:block; height:0; clear:both; visibility:hidden; }
+.clearfix { display:inline-block; }		
+/* hides clearfix from IE-mac \*/
+* html .clearfix { height:1%; }
+.clearfix { display:block; }
+/* end hide from IE-mac */
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------------*/
+/* ---------->>> global settings needed for thickbox <<<-----------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------------*/
+*{padding: 0; margin: 0;}
+
+#docs-content {
+	margin: 0 !important;
+	padding: 0 !important;
+	line-height: auto !important;
+	background: none !important;
+}
+#docs-content pre {
+	border: 1px dotted #ddd !important;
+	background: #f5f4ee !important;
+	font-size: 11px !important;
+	padding: 5px !important;
+	line-height: 1.6 !important;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	margin: .8em 0 1.2em !important;
+	color: #06263C !important;
+}
+
+#column-content {
+	font-size: 130%;
+}
+
+#docs-content h3 {
+	margin-top: 0.3em;
+}
+
+#toc td {
+	padding: 8px;
+}
+
+b.args, b.options {
+	background: #0F67A1 !important;
+	padding: 5px 10px !important;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	font-size: 15px !important;
+	margin-bottom: 20px !important;
+	margin-top: 1em !important;
+}
+table tr.option {
+	background: #e2edf4 !important;
+}
+
+table tr.option td {
+	padding: 3px 10px !important;
+	font-size: 13px !important;
+	background-color: #e2edf4;
+}
+table tr.option td.desc {
+	padding: 3px 10px 20px !important;
+}
+div.api h3 {
+	background: #FFF !important;
+	color: #0F67A1 !important;
+	border-bottom: 1px solid #AAAAAA;
+}
+
+div.api div.desc {
+	font-size: 100% !important;
+}
+
+#content h1 {
+	padding-top: 0.5em;
+}
+
+#download a.name {
+    display: none;
+}
+
+html.js #download a.name {
+    display: block;
+}
+
+html.js #download input {
+    display: none;
+}
