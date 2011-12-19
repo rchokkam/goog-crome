@@ -7,3 +7,21 @@
 	margin: 5px;
 	/*display: none;*/
 }
+
+#toolbar-uuid {
+  padding: 10px;
+}
+
+#toolbar-kid {
+  padding: 10px;
+}
+
+#uuid {
+	width: 300px;
+	height: 20px;
+}
+
+#kid {
+	width: 300px;
+	height: 20px;	
+}
