@@ -4,7 +4,7 @@
   "description": "Order UI Extension.",
   "app": {
     "launch": {
-      "local_path": "index.html"
+      "local_path": "main.html"
     }	
   },
   "icons": {

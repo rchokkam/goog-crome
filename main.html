@@ -11,7 +11,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="js/jsrender.js"></script>	
 <script type="text/javascript" src="js/order-ui.js"></script>
+
 
 <link type="text/css"
 	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
@@ -23,7 +26,18 @@
 
 <link rel="shortcut icon" href="http://static.jquery.com/favicon.ico" type="image/x-icon" />
 
-
+<script id="orderDetails" type="text/x-jquery-tmpl">
+	<table>
+	<thead><tr>
+		<th>Ordre dato</th><th>Status</th><th>Instnr</th><th>Kunde Id</th><th>Address Id</th><th>Version</th>
+	</tr></thead>
+	<tbody>
+	<tr>
+		<td>{{=ordredato}}</td><td>{{=status}}</td><td>{{=instnr}}</td><td>{{=kundeid}}</td><td>{{=amsid}}</td><td>{{=version}}</td>
+	</tr>
+	</tbody>
+	</table>
+</script>
 
 </head>
 
@@ -45,24 +59,38 @@
 		<div id="content" class="clearfix">
 			<!-- #primaryContent -->
 			<div id="primaryContent">
-				<section id="request">
-					<fieldset id="request">
-						<legend>Request</legend>
-						<p id="purl">
-          				<label for="url" class="_msg_">url</label> 
-          				<input type="text" name="url" id="url" tabindex="1">
-          				<input class="_msg_val_" type="button" value="send" id="submit" tabindex="2">
-        				</p>
-					</fieldset>
-				</section>
+				<div id="accordion">
+					<h3><a href="#">Order by UUID</a></h3>
+					<div>
+						<div id="toolbar-uuid" class="ui-widget-header ui-corner-all">
+							<label for="uuid">UUID</label>
+							<input id="uuid" type="text"/>
+							<button id="uuid-b">Go</button>							
+						</div>	
 
-				<section id="response">
-					<fieldset id="request">
-						<legend>Response</legend>
-						<div id="dresponse">						
+						<div id="tabs">
+							<ul>
+								<li><a id="a-tab-1" href="#tabs-1">Ordre</a></li>
+								<li><a id="a-tab-3" href="#tabs-2">Kunde</a></li>
+								<li><a id="a-tab-2" href="#tabs-3">Address</a></li>							
+								<li><a id="a-tab-4" href="#tabs-4">Steps</a></li>							
+							</ul>
+							<div id="tabs-1">
+								<div id="ordre"></div>
+							</div>
+							<div id="tabs-2">
+								<div id="kunde"></div>
+							</div>
+							<div id="tabs-3">
+								<div id="address"></div>
+							</div>							
+							<div id="tabs-4">
+								<div id="steps"></div>
+							</div>							
 						</div>
-					</fieldset>
-				</section>
+
+					</div>				
+				</div>
 			</div>
 			<!-- /#primaryContent -->
 		</div>
