@@ -107,7 +107,7 @@ var get_order_by_kunde_id = function(kid) {
   				height: 250,
     			colNames:['UUID','Ordredato', 'Status', 'Salgskanal'],
     			colModel:[
-      				{name:'uuid',index:'uuid',sorttype:"string"},
+      				{name:'uuid',index:'uuid',width:'280px',sorttype:"string"},
       				{name:'ordredato',index:'ordredato'},
       				{name:'status',index:'status'},
       				{name:'salgskanal',index:'salgskanal'}      
