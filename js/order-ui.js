@@ -55,10 +55,20 @@ var get_order_by_uuid = function(uuid) {
 			// Render the template with the movies data and insert
 			// the rendered HTML under the "movieList" element
 			order_json = data;	
+
+			// Render order details
 			$("#ordre").empty().html(
-				$( "#orderDetails" ).render( data )
+				(new EJS({url: 'js/ejs/ordre.js'})).render(data)				
 			);					
 
+			// Render kunde information
+			$("#kunde").empty().html(
+				(new EJS({url: 'js/ejs/kunde.js'})).render(data['kunde-data'])
+			);
+
+			get_order_by_kunde_id(data.kundeid);
+
+			// Display tab widget.
 			$("#tabs").show();
 
 		},
@@ -87,14 +97,36 @@ var get_order_by_kunde_id = function(kid) {
 		success: function(data, textStatus, jqXHR){						
 			// Render the template with the movies data and insert
 			// the rendered HTML under the "movieList" element
-			$("#kid-rbody").empty().html(
-				$( "#kundeOrder" ).render( data )
+			// Render kunde information
+			$("#kunde-orders").empty().html(
+				(new EJS({url: 'js/ejs/korders.js'})).render(data)
 			);
-			$('#kid-rdiv').show();
 			
+			$("#kundeOrderGrid").jqGrid({				
+  				datatype: "local",  				
+  				height: 250,
+    			colNames:['UUID','Ordredato', 'Status', 'Salgskanal'],
+    			colModel:[
+      				{name:'uuid',index:'uuid',sorttype:"string"},
+      				{name:'ordredato',index:'ordredato'},
+      				{name:'status',index:'status'},
+      				{name:'salgskanal',index:'salgskanal'}      
+    			],
+    			pager: jQuery('#ko-pager'),
+    			viewrecords: true,
+    			multiselect: false,
+    			caption: "Ordre by kunde",
+    			height: "100%",
+    			width: "100%"
+			});
+
+			$.each(data,function(i,order){
+				$("#kundeOrderGrid").jqGrid('addRowData',i+1,order);
+			});
+
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-			alert('error');	
+			alert('Error get_order_by_kunde_id');	
 		},
 		complete: function(jqXHR,textStatus){
 			$('body').css('cursor','auto');
@@ -135,9 +167,13 @@ var get_order_by_kunde_id = function(kid) {
 var replacer=function(key, value) {
 	return value;
 };
+/**
+ *Resize the grid
+ **/
+var resize_the_grid=function() {
+    $('#theGrid').fluidGrid({base:'#grid_wrapper', offset:-20});
+};
 
-
-
-
+// $(window).resize(resize_the_grid);
 
 

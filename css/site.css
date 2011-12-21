@@ -1,0 +1,22 @@
+#grid_wrapper
+{
+  /*border: 1px #555 solid; */
+  padding-top: 10px;
+  /*width:50%; */
+}
+
+#info_wrapper
+{
+  display:block;
+  width: 17em;
+}
+
+.clear { clear:both; }
+.floatLeft { float:left; }
+.floatRight { float:right; }
+
+/* === Additions to jQuery UI Theme === */
+.ui-state-highlight
+{
+  font-size:.7em;
+}
