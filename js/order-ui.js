@@ -7,7 +7,10 @@ var accept_header = 'application/vnd.yousee.kasia2+json;charset=UTF-8;version=1'
 
 $(function(){
 
-	$("#tabs").tabs();
+	$("#tabs").tabs({
+		event: "mouseover"
+	});
+	
 	$("#tabs").hide();
 
 	$('#accordion').accordion({
@@ -56,6 +59,9 @@ var get_order_by_uuid = function(uuid) {
 			// the rendered HTML under the "movieList" element
 			order_json = data;	
 
+			// Display tab widget.
+			$("#tabs").show();
+
 			// Render order details
 			$("#ordre").empty().html(
 				(new EJS({url: 'js/ejs/ordre.js'})).render(data)				
@@ -68,8 +74,9 @@ var get_order_by_uuid = function(uuid) {
 
 			get_order_by_kunde_id(data.kundeid);
 
-			// Display tab widget.
-			$("#tabs").show();
+
+			// Address Tab
+			get_address_by_amsid(data.amsid);
 
 		},
 		error: function(jqXHR, textStatus, errorThrown){
@@ -150,7 +157,42 @@ var get_order_by_kunde_id = function(kid) {
 		},
 		success: function(data, textStatus, jqXHR){						
 			// Render the template with the movies data and insert
-			// the rendered HTML under the "movieList" element								
+			// the rendered HTML under the "movieList" element	
+
+			$("#address").empty().html(
+				(new EJS({url: 'js/ejs/adresse.js'})).render(data)
+			);
+
+			var myLatlng = new google.maps.LatLng(parseFloat(data.latitude), parseFloat(data.longitude));
+    		var myOptions = {
+      			zoom: 18,
+      			center: myLatlng,
+      			mapTypeId: google.maps.MapTypeId.ROADMAP
+    		};
+    		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+    		var addTitle = $('#kaddress').text();
+			var marker = new google.maps.Marker({
+    			position: myLatlng,
+    			title: addTitle
+			});
+
+			var infowindow = new google.maps.InfoWindow({
+   				content: addTitle
+			});
+
+			// To add the marker to the map, call setMap();
+			marker.setMap(map);
+
+			google.maps.event.addListener(marker, 'click', function() {
+  				infowindow.open(map,marker);
+			});
+
+			
+			$('#map_canvas').css('width','850px');
+			$('#map_canvas').css('height','650px');
+			google.maps.event.trigger(map, 'resize'); 
+
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 			alert('Error get_address_by_amsid');	
