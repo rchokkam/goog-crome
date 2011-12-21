@@ -5,10 +5,24 @@ var order_json={};
 
 var accept_header = 'application/vnd.yousee.kasia2+json;charset=UTF-8;version=1';
 
+var map;
+var marker;
+
 $(function(){
 
 	$("#tabs").tabs({
 		event: "mouseover"
+	});
+
+	$("#a-tab-3").bind("mouseover",function(){
+		if(map!=undefined || map!=null){
+			google.maps.event.trigger(map, 'resize');
+		}
+
+		if(marker!=undefined || market!=null){
+			map.setCenter(marker.getPosition());
+			google.maps.event.trigger(marker, 'click');	
+		}		
 	});
 	
 	$("#tabs").hide();
@@ -165,14 +179,14 @@ var get_order_by_kunde_id = function(kid) {
 
 			var myLatlng = new google.maps.LatLng(parseFloat(data.latitude), parseFloat(data.longitude));
     		var myOptions = {
-      			zoom: 18,
+      			zoom: 16,
       			center: myLatlng,
       			mapTypeId: google.maps.MapTypeId.ROADMAP
     		};
-    		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
     		var addTitle = $('#kaddress').text();
-			var marker = new google.maps.Marker({
+			marker = new google.maps.Marker({
     			position: myLatlng,
     			title: addTitle
 			});
@@ -187,11 +201,6 @@ var get_order_by_kunde_id = function(kid) {
 			google.maps.event.addListener(marker, 'click', function() {
   				infowindow.open(map,marker);
 			});
-
-			
-			$('#map_canvas').css('width','850px');
-			$('#map_canvas').css('height','650px');
-			google.maps.event.trigger(map, 'resize'); 
 
 		},
 		error: function(jqXHR, textStatus, errorThrown){
