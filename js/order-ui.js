@@ -81,7 +81,11 @@ var get_order_by_uuid = function(uuid) {
 				(new EJS({url: 'js/ejs/ordre.js'})).render(data)				
 			);					
 
+			// Render steps data grid
+			populate_steps_grid(data.steps);
+
 			// Render kunde information
+			// TODO - for simple html replace $.get to get the html content.
 			$("#kunde").empty().html(
 				(new EJS({url: 'js/ejs/kunde.js'})).render(data['kunde-data'])
 			);
@@ -212,6 +216,37 @@ var get_order_by_kunde_id = function(kid) {
 	});
  };
 
+ /**
+  *
+  **/
+var populate_steps_grid = function(steps){
+	// TODO - for simple html replace $.get to get the html content.
+	$("#steps").empty().html(
+		(new EJS({url: 'js/ejs/steps.js'})).render(steps)
+	);
+
+	$("#orderStepsGrid").jqGrid({				
+  		datatype: "local",  				
+  		height: 250,
+    	colNames:['Varenummer','Step status', 'kode', 'Id'],
+    	colModel:[
+      		{name:'varenummer',index:'varenummer',sorttype:"string"},
+      		{name:'step_status',index:'step_status'},
+      		{name:'kode',index:'kode'},
+      		{name:'id',index:'id'}      
+    	],
+    	pager: jQuery('#os-pager'),
+    	viewrecords: true,
+    	multiselect: false,
+    	caption: "Ordre steps",
+    	height: "100%",
+    	width: "100%"
+	});
+
+	$.each(steps,function(i,step){
+		$("#orderStepsGrid").jqGrid('addRowData',i+1,step);
+	});
+};  
 /**
  * Replacer callback function for JSON.stringnify.
  */
