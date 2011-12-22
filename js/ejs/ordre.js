@@ -1,18 +1,18 @@
-<table>
+<table class="stylecls">
 	<thead><tr>
-		<th>Ordre dato</th>
-		<th>Status</th>
-		<th>Instnr</th>
-		<th>Kunde Id</th>
-		<th>Address Id</th>
-		<th>Version</th></tr>
+		<th class="styleth">Ordre dato</th>
+		<th class="styleth">Status</th>
+		<th class="styleth">Instnr</th>
+		<th class="styleth">Kunde Id</th>
+		<th class="styleth">Address Id</th>
+		<th class="styleth">Version</th></tr>
 	</thead>
 	<tbody><tr>
-		<td><%= ordredato %></td>
-		<td><%= status %></td>
-		<td><%= instnr %></td>
-		<td><%= kundeid %></td>
-		<td><%= amsid %></td>
-		<td><%= version %></td></tr>
+		<td class="styletd"><%= ordredato %></td>
+		<td class="styletd"><%= status %></td>
+		<td class="styletd"><%= instnr %></td>
+		<td class="styletd"><%= kundeid %></td>
+		<td class="styletd"><%= amsid %></td>
+		<td class="styletd"><%= version %></td></tr>
 	</tbody>
 </table>
