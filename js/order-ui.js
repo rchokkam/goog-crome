@@ -146,7 +146,7 @@ var get_order_by_kunde_id = function(kid) {
 			});
 
 			$.each(data,function(i,order){
-				$("#kundeOrderGrid").jqGrid('addRowData',i+1,order);
+				$("#kundeOrderGrid").jqGrid('addRowData',i+1,order);				
 			});
 
 		},
