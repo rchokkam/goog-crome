@@ -31,14 +31,10 @@
 border-collapse:collapse;
 }
 
-.stylecls, .styleth, .styletd
+.stylecls, .styletd
 {
 border:1px solid #6D7B8D;
 padding:7px;
-}
-
-.styleth {
-	background: #e8bc62;
 }
 
 .stylehd {
@@ -46,4 +42,11 @@ padding:7px;
 	padding:7px;
 	font-weight: bold;
 	background-color: #cccccc;
+}
+
+.styleth {
+	border:1px solid #6D7B8D;
+	background: #e8bc62;
+	padding:7px;
+	color: #1C94C4;
 }
