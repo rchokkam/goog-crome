@@ -129,8 +129,7 @@ var get_order_by_kunde_id = function(kid) {
 			
 			var jsonData = {"rows": data};
 			$("#kundeOrderGrid").jqGrid({				
-  				datatype: "local",  				
-  				height: 250,
+  				datatype: "local",  				  				
     			colNames:['UUID','Ordredato', 'Status', 'Salgskanal'],
     			colModel:[
       				{name:'uuid',index:'uuid',width:'280px',sorttype:"string"},
@@ -145,7 +144,7 @@ var get_order_by_kunde_id = function(kid) {
     			multiselect: false,
     			caption: "Ordre by kunde",
     			id: 'uuid',			    			
-    			width: "866px"
+    			width: 866
 			}).navGrid('#ko-pager',{edit:false,add:false,del:false});
 
 			$.each(data,function(i,order){
@@ -229,8 +228,7 @@ var populate_steps_grid = function(steps){
 	);
 
 	$("#orderStepsGrid").jqGrid({				
-  		datatype: "local",  				
-  		height: 250,
+  		datatype: "local",  				  		
     	colNames:['Varenummer','Step status', 'kode', 'Id'],
     	colModel:[
       		{name:'varenummer',index:'varenummer',sorttype:"string"},
@@ -245,7 +243,7 @@ var populate_steps_grid = function(steps){
     	viewrecords: true,
     	multiselect: false,
     	caption: "Ordre steps",    	
-    	width: "866px"
+    	width: 866
 	}).navGrid('#os-pager',{edit:false,add:false,del:false});
 
 	$.each(steps,function(i,step){
