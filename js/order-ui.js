@@ -32,7 +32,7 @@ $(function(){
 		navigation : true
 	});
 
-	$('button').button();
+	$('button').button();	
 
 	$('#uuid-b').click(function(){
 		// get uuid
@@ -127,6 +127,7 @@ var get_order_by_kunde_id = function(kid) {
 				(new EJS({url: 'js/ejs/korders.js'})).render(data)
 			);
 			
+			var jsonData = {"rows": data};
 			$("#kundeOrderGrid").jqGrid({				
   				datatype: "local",  				
   				height: 250,
@@ -137,13 +138,15 @@ var get_order_by_kunde_id = function(kid) {
       				{name:'status',index:'status'},
       				{name:'salgskanal',index:'salgskanal'}      
     			],
-    			pager: jQuery('#ko-pager'),
+    			rowNum:10,
+   				rowList:[10,20,30],
+    			pager: '#ko-pager',
     			viewrecords: true,
     			multiselect: false,
     			caption: "Ordre by kunde",
-    			height: "100%",
-    			width: "100%"
-			});
+    			id: 'uuid',			    			
+    			width: "866px"
+			}).navGrid('#ko-pager',{edit:false,add:false,del:false});
 
 			$.each(data,function(i,order){
 				$("#kundeOrderGrid").jqGrid('addRowData',i+1,order);				
@@ -233,19 +236,22 @@ var populate_steps_grid = function(steps){
       		{name:'varenummer',index:'varenummer',sorttype:"string"},
       		{name:'step_status',index:'step_status'},
       		{name:'kode',index:'kode'},
-      		{name:'id',index:'id'}      
+      		{name:'id',index:'sid'}      
     	],
-    	pager: jQuery('#os-pager'),
+    	id: 'id',
+    	rowNum:10,
+   		rowList:[10,20,30],
+    	pager: '#os-pager',
     	viewrecords: true,
     	multiselect: false,
-    	caption: "Ordre steps",
-    	height: "100%",
-    	width: "100%"
-	});
+    	caption: "Ordre steps",    	
+    	width: "866px"
+	}).navGrid('#os-pager',{edit:false,add:false,del:false});
 
 	$.each(steps,function(i,step){
 		$("#orderStepsGrid").jqGrid('addRowData',i+1,step);
 	});
+
 };  
 /**
  * Replacer callback function for JSON.stringnify.
