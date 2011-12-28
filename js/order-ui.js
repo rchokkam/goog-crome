@@ -79,7 +79,27 @@ var get_order_by_uuid = function(uuid) {
 			// Render order details
 			$("#ordre").empty().html(
 				(new EJS({url: 'js/ejs/ordre.js'})).render(data)				
-			);					
+			);
+			
+			$('#order-detail-acrdion').accordion({
+				autoHeight : false,
+				navigation : true
+			});
+			
+			$('#order-aftaler-acrdion').accordion({
+				autoHeight : false,
+				navigation : true
+			});
+						
+			var kundeData=data['kunde-data'];
+			
+			// Render Aftaler
+			render_order_aftaler(kundeData.aftaler);
+			// Render Valgt
+			render_order_valgt(kundeData.valgt);
+			// Render Opsagt				
+			render_order_opsagt([]);
+
 
 			// Render steps data grid
 			populate_steps_grid(data.steps);
@@ -87,7 +107,7 @@ var get_order_by_uuid = function(uuid) {
 			// Render kunde information
 			// TODO - for simple html replace $.get to get the html content.
 			$("#kunde").empty().html(
-				(new EJS({url: 'js/ejs/kunde.js'})).render(data['kunde-data'])
+				(new EJS({url: 'js/ejs/kunde.js'})).render(kundeData)
 			);
 
 			get_order_by_kunde_id(data.kundeid);
@@ -123,32 +143,41 @@ var get_order_by_kunde_id = function(kid) {
 			// Render the template with the movies data and insert
 			// the rendered HTML under the "movieList" element
 			// Render kunde information
-			$("#kunde-orders").empty().html(
-				(new EJS({url: 'js/ejs/korders.js'})).render(data)
-			);
-			
-			var jsonData = {"rows": data};
-			$("#kundeOrderGrid").jqGrid({				
-  				datatype: "local",  				  				
-    			colNames:['UUID','Ordredato', 'Status', 'Salgskanal'],
-    			colModel:[
-      				{name:'uuid',index:'uuid',width:'280px',sorttype:"string"},
-      				{name:'ordredato',index:'ordredato'},
-      				{name:'status',index:'status'},
-      				{name:'salgskanal',index:'salgskanal'}      
-    			],
-    			rowNum:10,
-   				rowList:[10,20,30],
-    			pager: '#ko-pager',
-    			viewrecords: true,
-    			multiselect: false,
-    			caption: "Ordre by kunde",
-    			id: 'uuid',			    			
-    			width: 866
-			}).navGrid('#ko-pager',{edit:false,add:false,del:false});
 
+			$("#kunde-orders").empty();	
 			$.each(data,function(i,order){
-				$("#kundeOrderGrid").jqGrid('addRowData',i+1,order);				
+				var korder = '#' + order.uuid,
+					korder_grid = korder + '-grid',
+					korder_pager = korder + '-pager',
+					korder_caption = '| ' + order.uuid + ' | ' + order.ordredato + ' | ' + order.status + ' | ';
+
+				$("#kunde-orders").append(
+					(new EJS({url: 'js/ejs/korders.js'})).render(order)
+				);	
+
+				$(korder_grid).jqGrid({				
+	  				datatype: "local",  				  				
+	    			colNames:['Navn','Varenr', 'Type', 'Forretningsområde'],
+	    			colModel:[
+	      				{name:'navn',index:'navn',sorttype:"string"},
+	      				{name:'varenr',index:'varenr'},
+	      				{name:'type',index:'type'},
+	      				{name:'forretningsområde',index:'forretningsområde'}      
+	    			],
+	    			rowNum:10,
+	   				rowList:[10,20,30],
+	    			pager: korder_pager,
+	    			viewrecords: true,
+	    			multiselect: false,
+	    			caption: korder_caption,	    					
+	    			width: 866,
+	    			height: '100%'
+				}).navGrid(korder_pager,{edit:false,add:false,del:false});
+
+				$.each(order.valgte,function(i,valgte){
+					$(korder_grid).jqGrid('addRowData',i+1,valgte);				
+				});
+				
 			});
 
 		},
@@ -234,7 +263,7 @@ var populate_steps_grid = function(steps){
       		{name:'varenummer',index:'varenummer',sorttype:"string"},
       		{name:'step_status',index:'step_status'},
       		{name:'kode',index:'kode'},
-      		{name:'id',index:'sid'}      
+      		{name:'id',index:'id',jsonmap:'id'}
     	],
     	id: 'id',
     	rowNum:10,
@@ -243,7 +272,8 @@ var populate_steps_grid = function(steps){
     	viewrecords: true,
     	multiselect: false,
     	caption: "Ordre steps",    	
-    	width: 866
+    	width: 866,
+	    height: '100%'
 	}).navGrid('#os-pager',{edit:false,add:false,del:false});
 
 	$.each(steps,function(i,step){
@@ -263,7 +293,90 @@ var replacer=function(key, value) {
 var resize_the_grid=function() {
     $('#theGrid').fluidGrid({base:'#grid_wrapper', offset:-20});
 };
+/**
+ *
+ **/
+var render_order_aftaler = function(aftaler){
+	$("#order-aftaler").empty();
+	$.each(aftaler, function(i, aftal){
+		var aftalenr = '#' + aftal.aftalenr,
+			aftalenr_pager = aftalenr + '-pager',
+			aftalenr_caption = aftal.aftaletype + ' &gt;&gt; ' + aftal.aftalenr;
 
-// $(window).resize(resize_the_grid);
+		$("#order-aftaler").append(
+			(new EJS({url: 'js/ejs/aftaler.js'})).render(aftal)
+		);	
+				
+		$(aftalenr).jqGrid({				
+	  		datatype: "local",  				  		
+	    	colNames:['Navn','Varenr','Varetype','Sorteringsgruppe'],
+	    	colModel:[
+	      		{name:'navn',index:'navn',sorttype:"string"},
+	      		{name:'varenr',index:'varenr'},
+	      		{name:'varetype',index:'varetype'},
+	      		{name:'sorteringsgruppe',index:'sorteringsgruppe'}
+	    	],	    	
+	    	rowNum:10,
+	   		rowList:[10,20,30],
+	    	pager: aftalenr_pager,
+	    	viewrecords: true,
+	    	multiselect: false,	    	
+	    	caption: aftalenr_caption,
+	    	width: 810,
+	    	height: '100%'
+		}).navGrid(aftalenr_pager,{edit:false,add:false,del:false});
+
+		$.each(aftal.abonnementer,function(i,abonnement){
+			$(aftalenr).jqGrid('addRowData',i+1,abonnement);
+		});
+	});			
+};
+/**
+ *
+ **/
+var render_order_valgt = function(valgts){
+	$('#order-valgt').empty();
+
+	$.each(valgts, function(i, valgt){		
+		var valgt_aftalenr = '#' + valgt.aftalenr + '-valgt',
+			valgt_aftalenr_pager = valgt_aftalenr + '-pager',
+			valgt_aftalenr_caption = valgt.aftaletype + ' &gt;&gt; ' + valgt.aftalenr;
+
+		$('#order-valgt').append(
+			(new EJS({url: 'js/ejs/valgt.js'})).render(valgt)
+		);		
+			
+		$(valgt_aftalenr).jqGrid({				
+	  		datatype: "local",  				  		
+	    	colNames:['Navn','Varenr','Varetype','Sorteringsgruppe'],
+	    	colModel:[
+	      		{name:'navn',index:'navn',sorttype:"string"},
+	      		{name:'varenr',index:'varenr'},
+	      		{name:'varetype',index:'varetype'},
+	      		{name:'sorteringsgruppe',index:'sorteringsgruppe'}
+	    	],	    	
+	    	rowNum:10,
+	   		rowList:[10,20,30],
+	    	pager: valgt_aftalenr_pager,
+	    	viewrecords: true,
+	    	multiselect: false,	    	
+	    	caption: valgt_aftalenr_caption,
+	    	width: 810,
+	    	height: '100%'
+		}).navGrid(valgt_aftalenr_pager,{edit:false,add:false,del:false});
+		
+		$.each(valgt.varer,function(i,varer){
+			$(valgt_aftalenr).jqGrid('addRowData',i+1,varer);
+		});	
+
+	});
+};
+/**
+ *
+ **/
+var render_order_opsagt = function(opsagt){
+	$('#order-opsagt').text(opsagt.length);
+};
+
 
 
