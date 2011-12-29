@@ -101,7 +101,7 @@ var get_order_by_uuid = function(uuid) {
 			render_order_opsagt([]);
 
 
-			// Render steps data grid
+			// Render steps data grid		
 			populate_steps_grid(data.steps);
 
 			// Render kunde information
@@ -251,8 +251,12 @@ var get_order_by_kunde_id = function(kid) {
   *
   **/
 var populate_steps_grid = function(steps){
+	$("#steps").empty();
+	if(steps==undefined || steps == null){
+		return;
+	}
 	// TODO - for simple html replace $.get to get the html content.
-	$("#steps").empty().html(
+	$("#steps").html(
 		(new EJS({url: 'js/ejs/steps.js'})).render(steps)
 	);
 
