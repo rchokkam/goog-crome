@@ -73,7 +73,8 @@ var process_order_by_uuid = function(uuid) {
 			$("#ordre").empty();
 			$("#kunde").empty();
 			$("#response").empty();	
-			$('#jstreeview').empty();		
+			$('#jstreeview').empty();
+			$('body').css('cursor','wait');		
 		},
 		success: function(data, textStatus, jqXHR){						
 			// Display tab widget.
@@ -125,7 +126,8 @@ var process_order_by_uuid = function(uuid) {
 		error: function(jqXHR, textStatus, errorThrown){
 			alert('Error process_order_by_uuid');	
 		},
-		complete: function(jqXHR,textStatus){			
+		complete: function(jqXHR,textStatus){
+			$('body').css('cursor','auto');			
 		}						
 	});
  };
@@ -141,6 +143,7 @@ var process_order_by_kunde_id = function(kid) {
 		beforeSend:function(jqXHR, settings){			
 			jqXHR.setRequestHeader("Accept", accept_header);
 			jqXHR.setRequestHeader("Content-Type", accept_header);			
+			$('body').css('cursor','wait');	
 		},
 		success: function(data, textStatus, jqXHR){						
 			// Render kunde information
@@ -149,7 +152,8 @@ var process_order_by_kunde_id = function(kid) {
 		error: function(jqXHR, textStatus, errorThrown){
 			alert('Error process_order_by_kunde_id');	
 		},
-		complete: function(jqXHR,textStatus){			
+		complete: function(jqXHR,textStatus){	
+			$('body').css('cursor','auto');		
 		}						
 	});
  };
@@ -166,7 +170,8 @@ var process_order_by_kunde_id = function(kid) {
 		beforeSend:function(jqXHR, settings){			
 			jqXHR.setRequestHeader("Accept", accept_header);
 			jqXHR.setRequestHeader("Content-Type", accept_header);
-			$("#address").empty();			
+			$("#address").empty();	
+			$('body').css('cursor','wait');			
 		},
 		success: function(data, textStatus, jqXHR){						
 
@@ -203,7 +208,8 @@ var process_order_by_kunde_id = function(kid) {
 		error: function(jqXHR, textStatus, errorThrown){
 			alert('Error render_goog_map_by_amsid');	
 		},
-		complete: function(jqXHR,textStatus){			
+		complete: function(jqXHR,textStatus){	
+			$('body').css('cursor','auto');		
 		}						
 	});
  };
@@ -281,8 +287,7 @@ var render_kunde_orders = function(korders) {
     	viewrecords: true,
     	multiselect: false,
     	caption: "Ordre by kunde",    	
-    	width: 866,
-    	height: '100%'
+    	width: 866
 	}).navGrid('#ko-pager',{edit:false,add:false,del:false});
 
 	$.each(korders,function(i,order){
