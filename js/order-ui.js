@@ -123,7 +123,7 @@ var process_order_by_uuid = function(uuid) {
 
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-			alert('Error get_order_by_uuid');	
+			alert('Error process_order_by_uuid');	
 		},
 		complete: function(jqXHR,textStatus){			
 		}						
@@ -147,7 +147,7 @@ var process_order_by_kunde_id = function(kid) {
 			render_kunde_orders(data);					
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-			alert('Error get_order_by_kunde_id');	
+			alert('Error process_order_by_kunde_id');	
 		},
 		complete: function(jqXHR,textStatus){			
 		}						
@@ -201,7 +201,7 @@ var process_order_by_kunde_id = function(kid) {
 
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-			alert('Error get_address_by_amsid');	
+			alert('Error render_goog_map_by_amsid');	
 		},
 		complete: function(jqXHR,textStatus){			
 		}						
