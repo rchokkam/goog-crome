@@ -39,17 +39,23 @@ $(function(){
 		$('body').css('cursor','wait');	
 		try{
 			// invoke the web service
-			process_order_by_uuid(uuid);	
-		
-			if($("pre#rspre").height()>650){
-				$("pre#rspre").height(650);
-			}		
+			process_order_by_uuid(uuid);						
 		}catch(err){
 			console.log(err);
 		}
 		$('body').css('cursor','auto');
-		
+
+		$("#a-tab-1").trigger('mouseover');		
 	});
+
+	/*$("#a-tab-5").bind("mouseover",function(){
+		if($("#response").height()>650){
+			$("#response").height(650);
+		}
+		if($("pre#rspre").height()>650){
+			$("pre#rspre").height(650);
+		}		
+	});*/
 
 });
 /**
@@ -276,7 +282,7 @@ var render_kunde_orders = function(korders) {
   		datatype: "local",  				  		
     	colNames:['UUID','Ordredato', 'Status', 'Salgskanal'],
     	colModel:[
-    		{name:'uuid',index:'uuid',width:'280px',sorttype:"string"},
+    		{name:'uuid',index:'uuid',width:'280px',sorttype:"string",formatter:format_order_uuid},
     		{name:'ordredato',index:'ordredato'},
     		{name:'status',index:'status'},
     		{name:'salgskanal',index:'salgskanal'}      
@@ -293,6 +299,19 @@ var render_kunde_orders = function(korders) {
 	$.each(korders,function(i,order){
 		$("#kundeOrderGrid").jqGrid('addRowData',i+1,order);				
 	});
+};
+/**
+ *
+ **/
+var format_order_uuid = function(cellvalue, options, rowObject) {
+	return '<div style="cursor: pointer;" onclick="order_uuid_onclick(this);">' + cellvalue + '</div>'; 	
+};
+/**
+ *
+ **/
+var order_uuid_onclick = function(cur){	
+	$("#uuid").attr('value',$(cur).text());
+	$("#uuid-b").trigger('click');
 };
 /**
  *
